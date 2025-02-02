@@ -18,7 +18,9 @@ Rails.application.routes.draw do
         sessions: "api/v1/users/sessions"
       }
 
-      resources :accounts
+      resources :accounts do
+        resources :transactions
+      end
     end
   end
 end
