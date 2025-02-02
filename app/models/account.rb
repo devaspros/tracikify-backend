@@ -1,8 +1,13 @@
 class Account < ApplicationRecord
   belongs_to :user
 
+  has_many :transactions, dependent: :destroy
+
   enum account_type: {
-    ahorros: 0
+    efectivo: 0,
+    credito: 5,
+    ahorros: 10,
+    inversiones: 15
   }
 
   validates :name, presence: true
@@ -18,7 +23,7 @@ end
 #  balance      :integer          default(0)
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
-#  account_type :integer          default(0)
+#  account_type :integer          default("ahorros")
 #
 # Indexes
 #
