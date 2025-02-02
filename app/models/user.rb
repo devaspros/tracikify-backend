@@ -7,6 +7,9 @@ class User < ApplicationRecord
     :validatable
   )
 
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+
   def generate_jwt
     JWT.encode({ id: id, exp: 30.days.from_now.to_i }, Rails.application.secret_key_base)
   end

@@ -47,16 +47,4 @@ describe "Sessions API", type: :request do
       end
     end
   end
-
-  describe "DELETE /api/v1/users/sign_out" do
-    context "when logged out successfully" do
-      it "returns a success message", :aggregate_failures do
-        delete "/api/v1/users/sign_out", headers: {
-          "Authorization" => "Bearer #{user.generate_jwt}"
-        }, as: :json
-
-        expect(response).to have_http_status(:no_content)
-      end
-    end
-  end
 end

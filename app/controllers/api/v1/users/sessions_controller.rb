@@ -16,11 +16,6 @@ module Api
             render json: { error: "Invalid email or password" }, status: :unauthorized
           end
         end
-
-        # DELETE /api/v1/users/sign_out
-        def destroy
-          head :no_content
-        end
       end
     end
   end
