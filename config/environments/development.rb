@@ -88,4 +88,8 @@ Rails.application.configure do
 
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
+
+  # Since Rails 6.
+  # Read about at https://blog.bigbinary.com/2019/11/05/rails-6-adds-guard-against-dns-rebinding-attacks.html
+  config.hosts << "api.lvh.me"
 end
