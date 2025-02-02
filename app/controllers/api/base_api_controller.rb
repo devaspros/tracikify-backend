@@ -9,6 +9,8 @@ module Api
 
     before_action :authenticate_with_access_token!
 
+    include ApiExceptionHandler
+
     private
 
     def authenticate_with_access_token!
