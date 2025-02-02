@@ -4,11 +4,9 @@ describe "Accounts API", type: :request do
   describe "GET /api/v1/accounts" do
     it "returns a list of accounts" do
       user = create(:user)
-      account_type = create(:account_type, name: "Savings")
       account = create(
         :account,
         user: user,
-        account_type: account_type,
         name: "Main Account",
         balance: 1000
       )
@@ -29,11 +27,9 @@ describe "Accounts API", type: :request do
     context "when the account exists" do
       it "returns the account details" do
         user = create(:user)
-        account_type = create(:account_type, name: "Savings")
         account = create(
           :account,
           user: user,
-          account_type: account_type,
           name: "Main Account",
           balance: 1000
         )
@@ -67,15 +63,13 @@ describe "Accounts API", type: :request do
     context "when the request is valid" do
       it "creates a new account" do
         user = create(:user)
-        account_type = create(:account_type, name: "Savings")
         token = JsonWebToken.encode(payload: { user_id: user.id })
         headers = { "Authorization" => "Token #{token}" }
 
         valid_params = {
           account: {
             name: "New Account",
-            balance: 500,
-            account_type_id: account_type.id
+            balance: 500
           }
         }
 
@@ -111,11 +105,9 @@ describe "Accounts API", type: :request do
     context "when the account exists" do
       it "updates the account" do
         user = create(:user)
-        account_type = create(:account_type, name: "Savings")
         account = create(
           :account,
           user: user,
-          account_type: account_type,
           name: "Main Account",
           balance: 1000
         )
@@ -153,11 +145,9 @@ describe "Accounts API", type: :request do
     context "when the account exists" do
       it "deletes the account" do
         user = create(:user)
-        account_type = create(:account_type, name: "Savings")
         account = create(
           :account,
           user: user,
-          account_type: account_type,
           name: "Main Account",
           balance: 1000
         )
