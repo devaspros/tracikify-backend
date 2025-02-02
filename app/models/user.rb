@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_many :accounts, dependent: :destroy
+
   devise(
     :database_authenticatable,
     :registerable,
